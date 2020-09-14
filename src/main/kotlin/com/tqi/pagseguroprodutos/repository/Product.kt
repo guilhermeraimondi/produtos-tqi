@@ -9,8 +9,8 @@ import javax.persistence.Id
 class Product (
         @Id
         val id: UUID = UUID.randomUUID(),
-        val name: String,
-        val category: String,
-        val price: BigDecimal,
-        val active: Boolean
+        val name: String? = null,
+        val category: String? = null,
+        val price: BigDecimal? = null,
+        val active: Boolean? = null
 )
