@@ -3,7 +3,9 @@ package com.tqi.pagseguroprodutos.service
 import com.tqi.pagseguroprodutos.domain.ProductData
 import com.tqi.pagseguroprodutos.repository.Product
 import com.tqi.pagseguroprodutos.repository.ProductRepository
+import org.springframework.stereotype.Service
 
+@Service
 class ProductService(
         private val productRepository: ProductRepository
 ) {

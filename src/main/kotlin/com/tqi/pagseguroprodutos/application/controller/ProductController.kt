@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/products", produces = [APPLICATION_JSON_VALUE])
 class ProductController(
-        private val productService: ProductService,
-        private val productMapper: ProductMapper
+        private val productService: ProductService
 ) {
     @ResponseStatus(CREATED)
     @PostMapping
     fun createProduct(@RequestBody productRequest: CreateProductRequest) {
-        productService.createProduct(productMapper.convertToData(productRequest))
+//        productService.createProduct(productMapper.convertToData(productRequest))
     }
 }
