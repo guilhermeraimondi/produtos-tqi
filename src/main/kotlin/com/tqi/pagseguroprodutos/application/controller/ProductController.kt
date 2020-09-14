@@ -14,7 +14,6 @@ class ProductController(
         private val productMapper: ProductMapper
 ) {
     @ResponseStatus(CREATED)
-    @ResponseBody
     @PostMapping
     fun createProduct(@RequestBody productRequest: CreateProductRequest) {
         productService.createProduct(productMapper.convertToData(productRequest))
