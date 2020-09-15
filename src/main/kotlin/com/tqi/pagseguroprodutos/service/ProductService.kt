@@ -1,6 +1,5 @@
 package com.tqi.pagseguroprodutos.service
 
-import com.querydsl.core.types.Predicate
 import com.tqi.pagseguroprodutos.application.mapper.ProductMapper
 import com.tqi.pagseguroprodutos.domain.ProductData
 import com.tqi.pagseguroprodutos.repository.ProductRepository
@@ -23,8 +22,8 @@ class ProductService(
         return productMapper.convertToData(product)
     }
 
-    fun findAll(predicate: Predicate): List<ProductData> {
-        val products = productRepository.findAll(predicate)
+    fun findAll(): List<ProductData> {
+        val products = productRepository.findAll()
         return productMapper.convertToDataList(products.toList())
     }
 }
