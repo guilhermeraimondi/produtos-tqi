@@ -51,6 +51,8 @@
           <root url="file://$MODULE_DIR$/src/main/kotlin" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/target/generated-sources/annotations" />
+          <root url="file://$MODULE_DIR$/target/generated-sources/kapt/compile" />
+          <root url="file://$MODULE_DIR$/target/generated-sources/kaptKotlin" />
         </sourceRoots>
       </configuration>
     </facet>

@@ -6,6 +6,7 @@ import com.tqi.pagseguroprodutos.application.response.ProductResponse
 import com.tqi.pagseguroprodutos.domain.ProductData
 import com.tqi.pagseguroprodutos.repository.Product
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
 class ProductMapperImpl : ProductMapper {
@@ -34,6 +35,7 @@ class ProductMapperImpl : ProductMapper {
 
     override fun convertToEntity(productData: ProductData): Product {
         return Product(
+                id = productData?.id ?: UUID.randomUUID(),
                 name = productData.name,
                 category = productData.category,
                 price = productData.price,

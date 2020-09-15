@@ -7,6 +7,7 @@ import com.tqi.pagseguroprodutos.service.ProductService
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
 import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -34,5 +35,19 @@ class ProductController(
     fun findAll(): List<ProductResponse> {
         val products = productService.findAll()
         return productMapper.convertToResponseList(products)
+    }
+
+    @PutMapping("/{id}")
+    fun update(@PathVariable id: UUID, @RequestBody productRequest: CreateProductRequest): ResponseEntity<ProductResponse> {
+        val data = productMapper.convertToData(productRequest)
+        data.id = id
+        val product = productService.update(data);
+        return ResponseEntity.ok(productMapper.convertToResponse(product))
+    }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id: UUID): ResponseEntity<Void> {
+        productService.delete(id)
+        return ResponseEntity.noContent().build()
     }
 }
