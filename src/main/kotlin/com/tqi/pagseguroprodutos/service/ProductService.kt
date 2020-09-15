@@ -1,23 +1,29 @@
 package com.tqi.pagseguroprodutos.service
 
+import com.tqi.pagseguroprodutos.application.mapper.ProductMapper
 import com.tqi.pagseguroprodutos.domain.ProductData
-import com.tqi.pagseguroprodutos.repository.Product
 import com.tqi.pagseguroprodutos.repository.ProductRepository
+import com.tqi.pagseguroprodutos.service.exception.NotFoundException
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class ProductService(
-        private val productRepository: ProductRepository
+        private val productRepository: ProductRepository,
+        private val productMapper: ProductMapper
 ) {
-    fun createProduct(productData: ProductData) {
-        val product = Product(
-                name = productData.name,
-                category = productData.category,
-                price = productData.price,
-                active = productData.active
-        )
-
+    fun create(productData: ProductData) {
+        val product = productMapper.convertToEntity(productData)
         productRepository.save(product)
     }
 
+    fun find(id: UUID): ProductData {
+        val product = productRepository.findById(id).orElseThrow { NotFoundException() }
+        return productMapper.convertToData(product)
+    }
+
+    fun findAll(): List<ProductData> {
+        val products = productRepository.findAll()
+        return productMapper.convertToDataList(products.toList())
+    }
 }
