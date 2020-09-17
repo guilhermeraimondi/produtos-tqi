@@ -21,6 +21,6 @@ class GlobalExceptionHandler {
     @ExceptionHandler(Exception::class)
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     fun genericError(e: Exception) {
-        log.error("NotFound Exception", e)
+        log.error("Generic Exception", e)
     }
 }
