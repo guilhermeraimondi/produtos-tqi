@@ -18,7 +18,7 @@ class ProductService(
     }
 
     fun find(id: UUID): ProductData {
-        val product = productRepository.findById(id).orElseThrow { NotFoundException() }
+        val product = findById(id)
         return productMapper.convertToData(product)
     }
 
@@ -26,4 +26,17 @@ class ProductService(
         val products = productRepository.findAll()
         return productMapper.convertToDataList(products.toList())
     }
+
+    fun update(productData: ProductData): ProductData {
+        val product = productMapper.convertToEntity(productData)
+        val productSave = productRepository.save(product)
+        return productMapper.convertToData(productSave)
+    }
+
+    fun delete(id: UUID) {
+        val product = findById(id)
+        productRepository.delete(product)
+    }
+
+    private fun findById(id: UUID) = productRepository.findById(id).orElseThrow { NotFoundException() }
 }
