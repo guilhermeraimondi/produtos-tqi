@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  mysqlsrv:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "pags_product"
+      MYSQL_DATABASE: "pags_product"
+    ports:
+      - "3306:3306"
