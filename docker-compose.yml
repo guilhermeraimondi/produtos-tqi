@@ -8,3 +8,6 @@ services:
       MYSQL_DATABASE: "pags_product"
     ports:
       - "3306:3306"
+    volumes:
+      - ./script/create-tables-test-schema.sql:/docker-entrypoint-initdb.d/create-tables.sql
+      - ./script/insert-populate-tables.sql:/docker-entrypoint-initdb.d/insert.sql
