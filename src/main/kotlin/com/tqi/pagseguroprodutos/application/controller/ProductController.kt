@@ -50,6 +50,7 @@ class ProductController(
     ])
     fun findAll(): List<ProductResponse> {
         val products = productService.findAll()
+
         return productMapper.convertToResponseList(products)
     }
 
