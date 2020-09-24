@@ -19,6 +19,7 @@ class ProductService(
 
     fun find(id: UUID): ProductData {
         val product = findById(id)
+
         return productMapper.convertToData(product)
     }
 
