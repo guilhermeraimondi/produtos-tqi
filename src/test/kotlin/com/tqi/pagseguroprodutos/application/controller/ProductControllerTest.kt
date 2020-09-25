@@ -49,7 +49,7 @@ class ProductControllerTest {
 //    private lateinit var productMapper: ProductMapper
 
     private val createProductToBeUpdated = ProductRequestCreator().createProductToBeUpdated()
-    private val productData = ProductDataCreator().createProductToBeUpdated()
+    private val productData = ProductDataCreator.createProductToBeUpdated()
     private val productResponse = ProductResponseCreator().createProductResponse()
     private val productRequestCreator = ProductRequestCreator().createProductToBeUpdated()
     private val id = UUID.randomUUID()

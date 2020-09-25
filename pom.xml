@@ -103,6 +103,23 @@
 			<artifactId>querydsl-jpa</artifactId>
 			<version>4.2.1</version>
 		</dependency>
+		<dependency>
+			<groupId>io.mockk</groupId>
+			<artifactId>mockk</artifactId>
+			<version>1.10.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.kotlintest</groupId>
+			<artifactId>kotlintest-extensions-spring</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.kotlintest</groupId>
+			<artifactId>kotlintest-runner-junit5</artifactId>
+			<version>3.4.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

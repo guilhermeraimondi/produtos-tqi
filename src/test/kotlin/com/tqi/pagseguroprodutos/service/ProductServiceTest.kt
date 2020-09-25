@@ -28,9 +28,9 @@ class ProductServiceTest {
     @Mock
     private lateinit var productMapper: ProductMapper
 
-    private val productDataToBeUpdated = ProductDataCreator().createProductToBeUpdated()
+    private val productDataToBeUpdated = ProductDataCreator.createProductToBeUpdated()
 
-    private val productToBeUpdated = ProductCreator().createProductToBeUpdated()
+    private val productToBeUpdated = ProductCreator.createProductToBeUpdated()
 
     @BeforeEach
     fun setUp() {

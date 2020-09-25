@@ -4,7 +4,17 @@ import com.tqi.pagseguroprodutos.repository.Product
 import java.math.BigDecimal
 import java.util.*
 
-class ProductCreator {
+object ProductCreator {
+    fun createProductToBeSaved(id: UUID): Product {
+        return Product(
+                id = id,
+                name = "Notebook Dell G5",
+                category = "Notebook",
+                price =  BigDecimal(5000),
+                active = true
+        )
+    }
+
     fun createProductToBeSaved(): Product {
         return Product(
                 name = "Notebook Dell G5",
