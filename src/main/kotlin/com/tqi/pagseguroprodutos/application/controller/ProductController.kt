@@ -2,6 +2,7 @@ package com.tqi.pagseguroprodutos.application.controller
 
 import com.tqi.pagseguroprodutos.application.mapper.ProductMapper
 import com.tqi.pagseguroprodutos.application.request.CreateProductRequest
+import com.tqi.pagseguroprodutos.application.response.ExternalApiObject
 import com.tqi.pagseguroprodutos.application.response.ProductResponse
 import com.tqi.pagseguroprodutos.service.ProductService
 import io.swagger.annotations.*
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus.OK
 import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.client.RestTemplate
 import java.util.*
 
 @Api(value = "Informação sobre produtos", tags = ["produto"])
@@ -19,6 +21,12 @@ class ProductController(
         private val productService: ProductService,
         private val productMapper: ProductMapper
 ) {
+
+
+    @GetMapping("/external-api")
+    fun getItemExternalApi(): ExternalApiObject {
+        return productService.getItemExternalApi()
+    }
 
     @ResponseStatus(CREATED)
     @PostMapping

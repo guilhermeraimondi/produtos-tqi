@@ -1,10 +1,12 @@
 package com.tqi.pagseguroprodutos.service
 
 import com.tqi.pagseguroprodutos.application.mapper.ProductMapper
+import com.tqi.pagseguroprodutos.application.response.ExternalApiObject
 import com.tqi.pagseguroprodutos.domain.ProductData
 import com.tqi.pagseguroprodutos.repository.ProductRepository
 import com.tqi.pagseguroprodutos.service.exception.NotFoundException
 import org.springframework.stereotype.Service
+import org.springframework.web.client.RestTemplate
 import java.util.*
 
 @Service
@@ -39,4 +41,10 @@ class ProductService(
     }
 
     private fun findById(id: UUID) = productRepository.findById(id).orElseThrow { NotFoundException() }
+
+    fun getItemExternalApi(): ExternalApiObject {
+//        val externalApiObject = ExternalApiObject("puxou do teste")
+        val externalApiObject = RestTemplate().getForObject("https://run.mocky.io/v3/1a1a31f4-7fb6-4b0c-8f42-d3f71df68de4", ExternalApiObject::class.java)!!
+        return externalApiObject
+    }
 }
